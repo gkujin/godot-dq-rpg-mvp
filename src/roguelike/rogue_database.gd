@@ -81,8 +81,8 @@ static func floor_name(floor_number: int) -> String:
 
 static func make_enemy(enemy_id: String, position: Vector2i, floor_number: int, rng: RandomNumberGenerator) -> Dictionary:
 	var definition: Dictionary = ENEMIES.get(enemy_id, ENEMIES["cave_rat"])
-	var depth_bonus := max(0, floor_number - 1)
-	var hp := int(definition.get("hp", 8)) + depth_bonus * 3
+	var depth_bonus: int = maxi(0, floor_number - 1)
+	var hp: int = int(definition.get("hp", 8)) + depth_bonus * 3
 	if bool(definition.get("boss", false)):
 		hp += depth_bonus * 4
 	return {

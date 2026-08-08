@@ -428,9 +428,9 @@ func debug_map_is_connected() -> bool:
 	var frontier: Array[Vector2i] = [start]
 	var reached := {start: true}
 	while not frontier.is_empty():
-		var current := frontier.pop_front()
+		var current: Vector2i = frontier.pop_front()
 		for direction in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
-			var next := current + direction
+			var next: Vector2i = current + direction
 			if not is_walkable(next) or reached.has(next):
 				continue
 			reached[next] = true
@@ -768,11 +768,11 @@ func _next_step_toward(start: Vector2i, target: Vector2i, moving_enemy_index: in
 	var frontier: Array[Vector2i] = [start]
 	var came_from := {start: start}
 	while not frontier.is_empty():
-		var current := frontier.pop_front()
+		var current: Vector2i = frontier.pop_front()
 		if current == target:
 			break
 		for direction in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
-			var next := current + direction
+			var next: Vector2i = current + direction
 			if came_from.has(next) or not is_walkable(next):
 				continue
 			var occupied_index := _enemy_index_at(next)

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - agent/build-godot-rpg-mvp
+  pull_request:
   workflow_dispatch:
 
 permissions:

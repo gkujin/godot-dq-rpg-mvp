@@ -105,7 +105,7 @@ func _build() -> void:
 	_log.scroll_following = true
 	_log.custom_minimum_size = Vector2(585, 190)
 	_log.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_log.add_theme_font_size_override("normal_font_size", 19)
+	_log.add_theme_font_size_override("normal_font_size", 22)
 	columns.add_child(_log)
 
 	var action_column := VBoxContainer.new()
@@ -115,11 +115,11 @@ func _build() -> void:
 
 	_hero_status = Label.new()
 	_hero_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_hero_status.add_theme_font_size_override("font_size", 19)
+	_hero_status.add_theme_font_size_override("font_size", 21)
 	action_column.add_child(_hero_status)
 
 	_commands = GridContainer.new()
-	_commands.columns = 3
+	_commands.columns = 2
 	_commands.add_theme_constant_override("h_separation", 8)
 	_commands.add_theme_constant_override("v_separation", 8)
 	action_column.add_child(_commands)
@@ -156,7 +156,7 @@ func _show_item_commands() -> void:
 func _add_button(label_text: String, command: String) -> void:
 	var button := Button.new()
 	button.text = label_text
-	button.custom_minimum_size = Vector2(125, 52)
+	button.custom_minimum_size = Vector2(185, 54)
 	button.pressed.connect(_on_command_pressed.bind(command))
 	_commands.add_child(button)
 

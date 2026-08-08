@@ -1,11 +1,22 @@
 class_name UiTheme
 extends RefCounted
 
+const UI_FONT_PATH := "res://assets/fonts/dragon-crest-ui.woff"
+
+
+static func get_ui_font() -> Font:
+	var font := load(UI_FONT_PATH) as FontFile
+	if font == null:
+		push_warning("Japanese UI font could not be loaded; using Godot's fallback font.")
+		return ThemeDB.fallback_font
+	font.fallbacks = [ThemeDB.fallback_font]
+	return font
+
 
 static func create_theme() -> Theme:
 	var theme := Theme.new()
-	theme.default_font = ThemeDB.fallback_font
-	theme.default_font_size = 20
+	theme.default_font = get_ui_font()
+	theme.default_font_size = 22
 
 	var panel := StyleBoxFlat.new()
 	panel.bg_color = Color("111d38e8")
@@ -53,6 +64,12 @@ static func create_theme() -> Theme:
 	theme.set_color("font_color", "Button", Color("fff4d6"))
 	theme.set_color("font_hover_color", "Button", Color.WHITE)
 	theme.set_color("font_disabled_color", "Button", Color("8f96a3"))
+	theme.set_color("font_outline_color", "Button", Color("050914"))
+	theme.set_constant("outline_size", "Button", 2)
 	theme.set_color("font_color", "Label", Color("fff4d6"))
+	theme.set_color("font_outline_color", "Label", Color("050914"))
+	theme.set_constant("outline_size", "Label", 2)
 	theme.set_color("default_color", "RichTextLabel", Color("fff4d6"))
+	theme.set_color("font_outline_color", "RichTextLabel", Color("050914"))
+	theme.set_constant("outline_size", "RichTextLabel", 2)
 	return theme

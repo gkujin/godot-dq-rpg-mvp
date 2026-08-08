@@ -71,13 +71,12 @@ func _build() -> void:
 	_text_label.bbcode_enabled = false
 	_text_label.fit_content = true
 	_text_label.custom_minimum_size.y = 84
-	_text_label.add_theme_font_size_override("normal_font_size", 24)
+	_text_label.add_theme_font_size_override("normal_font_size", 28)
 	content.add_child(_text_label)
 
 	var prompt := Label.new()
 	prompt.text = "Enter / Space  ▶"
 	prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	prompt.add_theme_font_size_override("font_size", 16)
+	prompt.add_theme_font_size_override("font_size", 18)
 	prompt.add_theme_color_override("font_color", Color("f2c14e"))
 	content.add_child(prompt)
-

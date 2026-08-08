@@ -2,7 +2,7 @@
 
 Godot 4.7.1で動く、初期ドラゴンクエスト風の2DコマンドRPGです。町で依頼を受け、草原と洞窟を進み、ボスを倒して町長へ報告するまでの30～45分の縦切り版です。
 
-外部画像、フォント、会話アドオンには依存していません。キャラクターとマップはGodotの描画APIで表示するため、リポジトリだけで起動できます。
+外部画像や会話アドオンには依存していません。キャラクターとマップはGodotの描画APIで表示し、日本語表示には同梱のNoto Sans JPを使用するため、リポジトリだけで起動できます。
 
 ## 実装済み
 
@@ -51,5 +51,6 @@ python3 tests/validate_project.py
 
 ## ライセンス
 
-[MIT License](LICENSE)
+ゲーム本体は [MIT License](LICENSE) です。
 
+`assets/fonts/dragon-crest-ui.woff` はNoto Sans JPからゲーム内の使用文字を抽出したフォントで、[SIL Open Font License 1.1](assets/fonts/OFL.txt)で提供されます。

@@ -70,8 +70,8 @@ func _build() -> void:
 	_stats_label = RichTextLabel.new()
 	_stats_label.bbcode_enabled = true
 	_stats_label.custom_minimum_size = Vector2(390, 460)
-	_stats_label.add_theme_font_size_override("normal_font_size", 20)
-	_stats_label.add_theme_font_size_override("bold_font_size", 25)
+	_stats_label.add_theme_font_size_override("normal_font_size", 22)
+	_stats_label.add_theme_font_size_override("bold_font_size", 27)
 	columns.add_child(_stats_label)
 
 	var actions := VBoxContainer.new()
@@ -98,7 +98,7 @@ func _build() -> void:
 	_message_label.custom_minimum_size.y = 56
 	_message_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_message_label.add_theme_font_size_override("font_size", 16)
+	_message_label.add_theme_font_size_override("font_size", 18)
 	_message_label.add_theme_color_override("font_color", Color("a8e0b1"))
 	actions.add_child(_message_label)
 

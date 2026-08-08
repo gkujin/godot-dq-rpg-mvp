@@ -46,12 +46,13 @@ func _build() -> void:
 
 	_hero_label = Label.new()
 	_hero_label.custom_minimum_size.x = 430
+	_hero_label.add_theme_font_size_override("font_size", 21)
 	row.add_child(_hero_label)
 
 	_quest_label = Label.new()
 	_quest_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_quest_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	_quest_label.add_theme_font_size_override("font_size", 17)
+	_quest_label.add_theme_font_size_override("font_size", 19)
 	_quest_label.add_theme_color_override("font_color", Color("b7c8e8"))
 	row.add_child(_quest_label)
 
@@ -64,6 +65,6 @@ func _build() -> void:
 	help.offset_bottom = -8
 	help.text = "方向キー: 移動　 Enter/Space: 調べる・話す　 Esc: セーブ／メニュー"
 	help.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	help.add_theme_font_size_override("font_size", 16)
+	help.add_theme_font_size_override("font_size", 18)
 	help.add_theme_color_override("font_color", Color("d0d8e8"))
 	add_child(help)

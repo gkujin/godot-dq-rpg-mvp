@@ -18,6 +18,8 @@ REQUIRED = [
     "src/core/game_database.gd",
     "src/battle/battle_engine.gd",
     "src/world/world_view.gd",
+    "assets/fonts/dragon-crest-ui.woff",
+    "assets/fonts/OFL.txt",
 ]
 
 
@@ -120,4 +122,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

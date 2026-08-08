@@ -14,6 +14,7 @@ func _run() -> void:
 	_test_insufficient_mp_does_not_spend_turn()
 	_test_victory_and_rewards()
 	_test_save_schema_round_trip()
+	_test_ui_font_coverage()
 
 	if _failures.is_empty():
 		print("PASS: %d checks" % _checks)
@@ -78,6 +79,12 @@ func _test_save_schema_round_trip() -> void:
 	_check(second.has_flag("quest_started"), "quest flags survive round trip")
 	first.free()
 	second.free()
+
+
+func _test_ui_font_coverage() -> void:
+	var font := UiTheme.get_ui_font()
+	for character in ["竜", "町", "戦", "薬", "続"]:
+		_check(font.has_char(character.unicode_at(0)), "UI font contains %s" % character)
 
 
 func _hero_fixture() -> Dictionary:

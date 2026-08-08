@@ -106,7 +106,7 @@ func _build() -> void:
 	var controls := Label.new()
 	controls.text = "方向キー: 移動 / Enter・Space: 決定 / Esc: メニュー"
 	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	controls.add_theme_font_size_override("font_size", 15)
+	controls.add_theme_font_size_override("font_size", 17)
 	controls.add_theme_color_override("font_color", Color("91a4c6"))
 	content.add_child(controls)
 

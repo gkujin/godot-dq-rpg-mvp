@@ -37,8 +37,10 @@ func _test_item_use() -> void:
 	engine.setup(hero, {"herb": 1, "ether": 0, "elixir": 0}, 13, 9, "slime", 101)
 	var result := engine.perform_action("item:herb")
 	var snapshot: Dictionary = result["snapshot"]
+	var messages: Array = result["messages"]
 	_check(bool(result["accepted"]), "available item is accepted")
-	_check(int(snapshot["hero_hp"]) == 50, "herb restores 30 HP")
+	_check(str(messages[0]).contains("HPが30"), "herb restores 30 HP before the enemy action")
+	_check(int(snapshot["hero_hp"]) > 20, "herb leaves a net HP gain after the enemy action")
 	_check(int((snapshot["inventory"] as Dictionary)["herb"]) == 0, "used item is consumed")
 
 
@@ -96,4 +98,3 @@ func _check(condition: bool, message: String) -> void:
 	_checks += 1
 	if not condition:
 		_failures.append(message)
-

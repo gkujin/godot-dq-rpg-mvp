@@ -1,0 +1,33 @@
+name: Validate project
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate project structure
+        run: python3 tests/validate_project.py
+
+  godot-headless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.1
+        run: |
+          curl --fail --location --retry 3 \
+            https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip \
+            --output /tmp/godot-4.7.1.zip
+          unzip -q /tmp/godot-4.7.1.zip -d /tmp/godot-4.7.1
+          chmod +x /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64
+          /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --version
+      - name: Smoke test main scene
+        run: /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --quit-after 5
+      - name: Run battle and save tests
+        run: /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --script tests/run_all.gd

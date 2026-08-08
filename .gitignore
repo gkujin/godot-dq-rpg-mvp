@@ -1,17 +1,17 @@
-# Godot 4+ specific ignores
+# Godot editor data
 .godot/
-.nomedia
-
-# Godot-specific ignores
 .import/
+.nomedia
 export.cfg
 export_credentials.cfg
+
+# Exported builds
+build/
+exports/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
 *.tmp
-
-# Imported translations (automatically generated from CSV files)
-*.translation
-
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
+__pycache__/
+*.pyc

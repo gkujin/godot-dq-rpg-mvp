@@ -27,6 +27,8 @@ jobs:
           unzip -q /tmp/godot-4.7.1.zip -d /tmp/godot-4.7.1
           chmod +x /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64
           /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --version
+      - name: Import project metadata
+        run: /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --import
       - name: Smoke test main scene
         run: /tmp/godot-4.7.1/Godot_v4.7.1-stable_linux.x86_64 --headless --path . --quit-after 5
       - name: Run battle and save tests

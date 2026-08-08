@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency-free structural checks for CI environments without Godot."""
+"""Dependency-free structural checks for the roguelike project."""
 
 from __future__ import annotations
 
@@ -12,12 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "project.godot",
     "src/main/main.tscn",
-    "src/main/main.gd",
-    "src/core/game_state.gd",
-    "src/core/save_service.gd",
-    "src/core/game_database.gd",
-    "src/battle/battle_engine.gd",
-    "src/world/world_view.gd",
+    "src/roguelike/rogue_database.gd",
+    "src/roguelike/rogue_engine.gd",
+    "src/roguelike/rogue_game.gd",
     "assets/fonts/dragon-crest-ui.woff",
     "assets/fonts/OFL.txt",
 ]
@@ -101,24 +98,29 @@ def main() -> None:
             fail(f"duplicate class_name {class_name}: {script} and {class_names[class_name]}")
         class_names[class_name] = script
 
-    database = (ROOT / "src/core/game_database.gd").read_text(encoding="utf-8")
+    database = (ROOT / "src/roguelike/rogue_database.gd").read_text(encoding="utf-8")
+    engine = (ROOT / "src/roguelike/rogue_engine.gd").read_text(encoding="utf-8")
     for required_id in [
-        '"town"',
-        '"field"',
-        '"dungeon"',
-        '"slime"',
-        '"bat"',
-        '"wolf"',
-        '"stone_drake"',
-        '"herb"',
-        '"ether"',
-        '"elixir"',
+        '"cave_rat"',
+        '"mire_ooze"',
+        '"venom_spider"',
+        '"bone_warden"',
+        '"ember_eye"',
+        '"abyss_keeper"',
+        '"healing"',
+        '"strength"',
+        '"mist"',
+        '"venom"',
     ]:
         if required_id not in database:
-            fail(f"missing MVP definition: {required_id}")
+            fail(f"missing roguelike definition: {required_id}")
+    for mechanic in ["generate_floor", "hunger", "identified_potions", "boss_defeated", "debug_map_is_connected"]:
+        if mechanic not in engine:
+            fail(f"missing roguelike mechanic: {mechanic}")
 
     print(f"PASS: validated {len(list(ROOT.rglob('*.gd')))} GDScript files and all res:// references")
 
 
 if __name__ == "__main__":
     main()
+
